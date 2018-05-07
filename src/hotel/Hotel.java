@@ -7,7 +7,7 @@ package hotel;
 
 /**
  *
- * @author Jeniffer Merino
+ * @author user
  */
 public class Hotel {
 
