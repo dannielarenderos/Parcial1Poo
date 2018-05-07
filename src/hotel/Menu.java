@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Danniela Renderos 
+ * @author Danniela Renderos
  */
 public class Menu {
 
@@ -121,24 +121,98 @@ public class Menu {
                                         System.out.println("");
                                         listaReserva.eliminarReservacion();
 
-                                        break;                                     
-                                }                          
-                                
-                            }                            
-                            catch (InputMismatchException e) {
+                                        break;
+                                }
+
+                            } catch (InputMismatchException e) {
                                 System.err.println("Por favor, Ingrese un número del 1 al 3");
                                 leer.nextLine();
                             }
                         }
 
-                    
-                        
 //Resto de cases                  
-                        
-                   
-                        
-                        
-                        
+                    case 4:
+
+                        System.out.println("1. -----PISOS-----");
+                        System.out.println("1. Ver pisos activos");
+                        System.out.println("2. Ver pisos por estado");
+                        System.out.println("3. Modificar estado de piso");
+                        System.out.println("4. Ampliar hotel: Agregar piso");
+                        System.out.println("");
+
+                        while (opcionInterna != 4) {
+                            try {
+                                opcionInterna = leer.nextInt();
+                                switch (opcionInterna) {
+                                    case 1:
+                                        System.out.println(" Pisos activos ");
+                                        System.out.println("");
+                                        listaPisos.mostrarPisos();
+                                        break;
+                                    case 2:
+                                        System.out.println(" Pisos por estados ");
+                                        System.out.println("");
+                                        break;
+                                    case 3:
+                                        System.out.println(" Modificar estado de piso ");
+                                        System.out.println("");
+                                        System.out.println("Ingrese el numero del piso que quiere modificar");
+                                        int numpiso = leer.nextInt();
+                                        Piso floor = listaPisos.listaPisos.get(numpiso - 1);
+                                        floor.setEstado("mantenimiento");
+                                        System.out.println("Estado modificado con exito");
+                                        break;
+                                    case 4:
+                                        System.out.println(" Agregar nuevo piso ");
+                                        System.out.println("");
+                                        System.out.println("Cuantos pisos desea ingresar");
+                                        int pisoExtra = leer.nextInt();
+                                        System.out.println("Cuantas habitaciones desea ingresar");
+                                        int habExtra = leer.nextInt();
+                                        for (int i = 1; i <= pisoExtra; i++) {
+                                            Piso floor2 = new Piso();
+                                            if (i >= 1 && i <= 26) {
+                                                ascii = 64 + i + cantPiso;
+                                                letra = Character.toString((char) ascii);
+                                                floor2.add(habExtra, letra, precioBase);
+                                                floor2.setLetra(letra);
+                                            }
+                                            floor2.setNumero(i + cantPiso);
+                                            floor2.setEstado("disponible");
+                                            //floor2.precioBase(precioBase);
+                                            listaPisos.add(floor2);
+                                            listaPisos.precioBaseHotel(precioBase);
+                                        }
+                                        break;
+                                }
+                            } catch (InputMismatchException e) {
+                                System.err.println("Por favor, Ingrese un número del 1 al 4");
+                                leer.nextLine();
+                            }
+                        }
+                        break;
+                    case 5:
+                        System.out.println("1. -----INVENTARIO-----");
+                        System.out.println("");
+
+                        while (opcionInterna != 1) {
+                            try {
+                                opcionInterna = leer.nextInt();
+                                switch (opcionInterna) {
+                                    case 1:
+                                        System.out.println(" Regristo de ganancias ");
+                                        System.out.println("");
+                                        listaReserva.mostrarGanancias();
+
+                                        break;
+
+                                }
+                            } catch (InputMismatchException e) {
+                                System.err.println("Por favor, Ingrese el numero 1");
+                                leer.nextLine();
+                            }
+                        }
+                        break;
                 }
             } catch (InputMismatchException e) {
                 System.err.println("Por favor, Ingrese un número");
