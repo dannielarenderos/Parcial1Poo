@@ -130,6 +130,46 @@ public class Menu {
                             }
                         }
                         break;
+                    case 2:
+                        System.out.println("1. -----PAQUETES-----");
+                        System.out.println("1. Ver paquetes disponibles");
+                        System.out.println("2. Modificar paquetes");
+                        System.out.println("3. Agregar paquete");
+                        System.out.println("4. Eliminar paquete");
+                        System.out.println("");
+
+                        while (opcionInterna != 4) {
+                            try {
+                                opcionInterna = leer.nextInt();
+                                switch (opcionInterna) {
+                                    case 1:
+                                        System.out.println(" Paquetes disponibles ");
+                                        System.out.println("");
+                                        listaPack.mostrarPaquetes();
+                                        break;
+                                    case 2:
+                                        System.out.println(" Modificar paquete");
+                                        System.out.println("");
+                                        listaPack.mostrarPaquetes();
+                                        listaPack.modificarPaquete();
+                                        break;
+                                    case 3:
+                                        System.out.println(" Agregar paquete ");
+                                        System.out.println("");
+                                        listaPack.agregarPaquete();
+                                        break;
+                                    case 4:
+                                        System.out.println(" Eliminar paquete ");
+                                        System.out.println("");
+                                        listaPack.eliminarPaquete();
+                                        break;
+                                }
+                            } catch (InputMismatchException e) {
+                                System.err.println("Por favor, Ingrese un número del 1 al 4");
+                                leer.nextLine();
+                            }
+                        }
+                        break;
                     case 3:
 
                         while (opcionInterna != 5) {
