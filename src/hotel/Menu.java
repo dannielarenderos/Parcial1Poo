@@ -125,10 +125,63 @@ public class Menu {
                                 }
 
                             } catch (InputMismatchException e) {
-                                System.err.println("Por favor, Ingrese un número del 1 al 3");
+                                System.err.println("Por favor, Ingrese un número del 1 al 4");
                                 leer.nextLine();
                             }
                         }
+                        break;
+                    case 3:
+
+                        while (opcionInterna != 5) {
+                            try {
+                                System.out.println("1. -----HABITACIONES-----");
+                                System.out.println("1. Ver habitaciones");
+                                System.out.println("2. Ver habitaciones por estado");
+                                System.out.println("3. Modificar precio de habitaciones");
+                                System.out.println("4. Modificar estado de habitaciones");
+                                System.out.println("5. Volver al menu principal");
+                                System.out.println("");
+
+                                opcionInterna = leer.nextInt();
+                                switch (opcionInterna) {
+                                    case 1:
+                                        System.out.println(" Habitaciones disponibles ");
+                                        System.out.println("");
+                                        listaPisos.mostrar();
+                                        break;
+                                    case 2:
+                                        System.out.println(" Habitaciones por estado");
+                                        System.out.println("");
+                                        break;
+                                    case 3:
+                                        System.out.println(" Modificar precio de habitacion");
+                                        System.out.println("");
+                                        System.out.println("Ingrese el nuevo precio base de la habitacion");
+                                        float precioB = leer.nextFloat();
+                                        listaPisos.precioBaseHotel(precioB);
+                                        break;
+                                    case 4:
+                                        System.out.println(" Modificar estado de habitacion ");
+                                        System.out.println("");
+                                        System.out.println("Ingrese el numero del piso que quiere modificar");
+                                        int numPiso2 = leer.nextInt();
+                                        System.out.println("Ingrese el numero de la habitacion que quiere modificar");
+                                        int numHab = leer.nextInt();
+                                        Piso piso = listaPisos.listaPisos.get(numPiso2 - 1);
+                                        Habitacion hab = piso.piso.get(numHab - 1);
+                                        hab.mostrar(hab);
+                                        hab.setEstado("mantenimiento");
+                                        hab.mostrar(hab);
+                                        System.out.println("Estado modificado con exito");
+                                        break;
+
+                                }
+                            } catch (InputMismatchException e) {
+                                System.err.println("Por favor, Ingrese un número del 1 al 5");
+                                leer.nextLine();
+                            }
+                        }
+                        break;
 
 //Resto de cases                  
                     case 4:

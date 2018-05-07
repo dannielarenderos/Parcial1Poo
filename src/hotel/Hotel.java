@@ -5,17 +5,27 @@
  */
 package hotel;
 
+import java.text.ParseException;
+
 /**
  *
- * @author user
+ * @author OLMEDO <00097017@uca.edu.sv>
  */
 public class Hotel {
+     
+    public static void main(String[] args) throws ParseException {     
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+        int flag=1;
+        ListaUsuarios listaU= ListaUsuarios.getInstance();
+        while(flag==1){
+            if(true){//TODO el funcionamiento parte luego del login listaU.Login()
+                flag=0;
+                System.out.println("Sesion iniciada!");
+                Menu menu= Menu.getInstance();
+                menu.mostrar();
+            }else{
+                System.out.println("Usuario o contrasennia invalido");
+            }
+        }
     }
-    
 }
