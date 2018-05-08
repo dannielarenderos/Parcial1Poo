@@ -190,7 +190,7 @@ public class Menu {
                                 leer.nextLine();
                             }
                         }
-                        break;
+                        break;        
                     case 5:
                         System.out.println("1. -----INVENTARIO-----");
                         System.out.println("");
