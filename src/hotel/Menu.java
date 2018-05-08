@@ -10,7 +10,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Menú principal 
+ * Menú principal
+ *
  * @author Danniela Renderos
  */
 public class Menu {
@@ -50,26 +51,67 @@ public class Menu {
         ListaReservaciones listaReserva = new ListaReservaciones();
         ListaPaquete listaPack = new ListaPaquete();
 
-        int ascii;
-        String letra;
-        int cantHab = 10, cantPiso = 6;
+        int ascii = 64;
+        String letra, letraPrim, letraSeg;
+        int cantHab = 10, cantPiso = 103;
+        int parteEnt = cantPiso / 26;
+        int residuo = cantPiso % 26;
         float precioBase = 100;
         ListaPisos listaPisos = new ListaPisos();
 
-        for (int i = 1; i <= cantPiso; i++) {
-            Piso piso = new Piso();
-            if (i >= 1 && i <= 26) {
-                ascii = 64 + i;
-                letra = Character.toString((char) ascii);
+        if (parteEnt == 0) {
+            for (int i = 1; i <= cantPiso; i++) {
+                Piso piso = new Piso();
+                letra = Character.toString((char) (ascii + i));
                 piso.add(cantHab, letra, precioBase);
                 piso.setLetra(letra);
+                piso.setNumero(i);
+                piso.setEstado("disponible");
+                listaPisos.add(piso);
             }
-            piso.setNumero(i);
-            piso.setEstado("disponible");
-            //piso.setPrecioPiso(precioBase);
-            //piso.precioBase(precioBase);
-            listaPisos.add(piso);
-            //listaPisos.precioBaseHotel(precioBase);
+        } else {
+            for (int i = 1; i <= 26; i++) {
+                Piso piso = new Piso();
+                letra = Character.toString((char) (ascii + i));
+                piso.add(cantHab, letra, precioBase);
+                piso.setLetra(letra);
+                piso.setNumero(i);
+                piso.setEstado("disponible");
+                listaPisos.add(piso);
+            }
+
+            if (cantPiso > 26) {
+                for (int j = 1; j < parteEnt; j++) {
+                    //Piso piso = new Piso();
+                    letraPrim = Character.toString((char) (ascii + j));
+
+                    for (int k = 1; k <= 26; k++) {
+                        Piso piso = new Piso();
+                        letraSeg = Character.toString((char) (ascii + k));
+                        letra = letraPrim + letraSeg;
+                        piso.add(cantHab, letra, precioBase);
+                        piso.setLetra(letra);
+                        piso.setNumero((26 * j) + k);
+                        piso.setEstado("disponible");
+                        listaPisos.add(piso);
+                    }
+                }
+                if (residuo != 0) {
+                    for (int m = 1; m <= 1; m++) {
+                        letraPrim = Character.toString((char) (ascii + parteEnt));
+                        for (int n = 1; n <= residuo; n++) {
+                            Piso piso = new Piso();
+                            letraSeg = Character.toString((char) (ascii + n));
+                            letra = letraPrim + letraSeg;
+                            piso.add(cantHab, letra, precioBase);
+                            piso.setLetra(letra);
+                            piso.setNumero((26 * parteEnt) + n);
+                            piso.setEstado("disponible");
+                            listaPisos.add(piso);
+                        }
+                    }
+                }
+            }
         }
         listaPisos.precioBaseHotel(precioBase);
 
@@ -367,7 +409,7 @@ public class Menu {
                                 leer.nextLine();
                             }
                         }
-                        break;        
+                        break;
                     case 5:
                         opcionInterna = 0;
                         while (opcionInterna != 2) {
