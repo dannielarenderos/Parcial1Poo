@@ -52,15 +52,28 @@ public class ListaPisos {
         }
         int numPiso = listaPisos.size();
 
-        Piso ultimoPiso=listaPisos.get(numPiso-1);
-        Piso penulPiso=listaPisos.get(numPiso-2);
+        Piso ultimoPiso = listaPisos.get(numPiso - 1);
+        Piso penulPiso = listaPisos.get(numPiso - 2);
         listaPisos.get(numPiso - 2).setPrecioPiso((float) (precio * 1.1));
         listaPisos.get(numPiso - 1).setPrecioPiso((float) (precio * 1.1));
-        for(Habitacion h:ultimoPiso.getPiso()){
-            h.setPrecioHab((float)(precio*1.1));
+        for (Habitacion h : ultimoPiso.getPiso()) {
+            h.setPrecioHab((float) (precio * 1.1));
         }
-        for(Habitacion h:penulPiso.getPiso()){
-            h.setPrecioHab((float)(precio*1.1));
+        for (Habitacion h : penulPiso.getPiso()) {
+            h.setPrecioHab((float) (precio * 1.1));
+        }
+    }
+
+    public void mostrarPisosEstado(String estado) {
+        int cont = 0;
+        for (Piso p : listaPisos) {
+            if (p.getEstado().equals(estado.toLowerCase())) {
+                cont++;
+                p.mostrar(p);
+            }
+        }
+        if (cont == 0) {
+            System.out.println("No hay pisos correspondientes al estado \"" + estado + "\"");
         }
     }
 }
