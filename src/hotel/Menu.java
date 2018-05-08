@@ -53,7 +53,7 @@ public class Menu {
 
         int ascii = 64;
         String letra, letraPrim, letraSeg;
-        int cantHab = 10, cantPiso = 103;
+        int cantHab = 10, cantPiso = 6;
         int parteEnt = cantPiso / 26;
         int residuo = cantPiso % 26;
         float precioBase = 100;
@@ -381,22 +381,92 @@ public class Menu {
                                             System.out.println("");
                                             System.out.println("Cuantos pisos desea ingresar");
                                             int pisoExtra = leer.nextInt();
+                                            parteEnt = pisoExtra / 26;
+                                            residuo = pisoExtra % 26;
                                             System.out.println("Cuantas habitaciones desea ingresar");
                                             int habExtra = leer.nextInt();
-                                            for (int i = 1; i <= pisoExtra; i++) {
-                                                Piso floor2 = new Piso();
-                                                if (i >= 1 && i <= 26) {
-                                                    ascii = 64 + i + cantPiso;
-                                                    letra = Character.toString((char) ascii);
-                                                    floor2.add(habExtra, letra, precioBase);
-                                                    floor2.setLetra(letra);
+
+                                            if (parteEnt == 0) {
+                                                for (int i = 1; i <= pisoExtra; i++) {
+                                                    Piso piso = new Piso();
+                                                    letra = Character.toString((char) (ascii + i + cantPiso));
+                                                    System.out.println(letra);
+                                                    System.out.println("1");
+
+                                                    piso.add(cantHab, letra, precioBase);
+                                                    piso.setLetra(letra);
+                                                    piso.setNumero(i + cantPiso);
+                                                    piso.setEstado("disponible");
+                                                    listaPisos.add(piso);
                                                 }
-                                                floor2.setNumero(i + cantPiso);
-                                                floor2.setEstado("disponible");
-                                                //floor2.precioBase(precioBase);
-                                                listaPisos.add(floor2);
-                                                listaPisos.precioBaseHotel(precioBase);
+                                            } else {
+                                                for (int i = 1; i <= 26; i++) {
+                                                    Piso piso = new Piso();
+                                                    letra = Character.toString((char) (ascii + i + cantPiso));
+                                                    System.out.println(letra);
+                                                    System.out.println("2");
+
+                                                    piso.add(cantHab, letra, precioBase);
+                                                    piso.setLetra(letra);
+                                                    piso.setNumero(i + cantPiso);
+                                                    piso.setEstado("disponible");
+                                                    listaPisos.add(piso);
+                                                }
+
+                                                if (pisoExtra > 26) {
+                                                    for (int j = 1; j < parteEnt; j++) {
+                                                        letraPrim = Character.toString((char) (ascii + j));
+
+                                                        for (int k = 1; k <= 26; k++) {
+                                                            Piso piso = new Piso();
+                                                            letraSeg = Character.toString((char) (ascii + k));
+                                                            letra = letraPrim + letraSeg;
+                                                            System.out.println(letra);
+                                                            System.out.println("3");
+
+                                                            piso.add(cantHab, letra, precioBase);
+                                                            piso.setLetra(letra);
+                                                            piso.setNumero((26 * j) + k);
+                                                            piso.setEstado("disponible");
+                                                            listaPisos.add(piso);
+                                                        }
+                                                    }
+                                                    if (residuo != 0) {
+                                                        for (int m = 1; m <= 1; m++) {
+                                                            letraPrim = Character.toString((char) (ascii + parteEnt));
+                                                            for (int n = 1; n <= residuo; n++) {
+                                                                Piso piso = new Piso();
+                                                                letraSeg = Character.toString((char) (ascii + n));
+                                                                letra = letraPrim + letraSeg;
+                                                                System.out.println(letra);
+                                                                System.out.println("4");
+
+                                                                piso.add(cantHab, letra, precioBase);
+                                                                piso.setLetra(letra);
+                                                                piso.setNumero((26 * parteEnt) + n);
+                                                                piso.setEstado("disponible");
+                                                                listaPisos.add(piso);
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
+                                            listaPisos.precioBaseHotel(precioBase);
+
+//                                            for (int i = 1; i <= pisoExtra; i++) {
+//                                                Piso floor2 = new Piso();
+//                                                if (i >= 1 && i <= 26) {
+//                                                    ascii = 64 + i + cantPiso;
+//                                                    letra = Character.toString((char) ascii);
+//                                                    floor2.add(habExtra, letra, precioBase);
+//                                                    floor2.setLetra(letra);
+//                                                }
+//                                                floor2.setNumero(i + cantPiso);
+//                                                floor2.setEstado("disponible");
+//                                                //floor2.precioBase(precioBase);
+//                                                listaPisos.add(floor2);
+//                                                listaPisos.precioBaseHotel(precioBase);
+//                                            }
                                             cantPiso += pisoExtra;
                                         } catch (InputMismatchException e) {
                                             System.err.println("Por favor, Ingrese un número");
