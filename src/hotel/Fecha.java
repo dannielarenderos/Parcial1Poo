@@ -22,6 +22,11 @@ class Fecha {
     Date fechaFinal;
     boolean valFecha = true;
 
+    /**
+     * Método que recibe las fechas para la reservación y las clasifica por temporada alta y baja
+     * @param PrecioBaseHabitacion
+     * @throws ParseException 
+     */
     public Fecha(float PrecioBaseHabitacion) throws ParseException {
         int flag = 1;
         Scanner entrada = new Scanner(System.in);
@@ -102,6 +107,11 @@ class Fecha {
         }
     }
 
+    /**
+     * Método que valida el formato de la fecha ingresada
+     * @param fecha
+     * @return 
+     */
     public static boolean validarFecha(String fecha) {
         try {
             SimpleDateFormat formFecha = new SimpleDateFormat("yyyy-MM-dd");
