@@ -52,8 +52,11 @@ public class ListaReservaciones {
     }
     public void mostrarGanancias(){
         int n=1;
+        System.out.println("");
         for (Reservacion r: listaReserva){
-            System.out.println((n+1)+". "+r.cliente.getNombre()+", "+"ganancias: "+r.gasto.Total());
+            System.out.println((n)+". Nombre:"+r.cliente.getNombre()+", Ganancias: $"+r.gasto.Total());
+            n+=1;
+            System.out.println("");
         }
     }
     public void eliminarReservacion(){
