@@ -15,55 +15,70 @@ import java.util.Scanner;
  */
 public class ListaReservaciones {
 
-    private ArrayList<Reservacion> listaReserva= new ArrayList<>();   
+    private ArrayList<Reservacion> listaReserva = new ArrayList<>();
 
     public ListaReservaciones() {
     }
-        /**
-         * Método que recibe reservaciones y crea una lista de estos
-         * @param listaPacks
-         * @param fecha
-         * @param n
-         * @param gasto
-         * @param habitacion
-         * @param piso
-         * @throws ParseException 
-         */
 
-    public void annadir(ListaPaquete listaPacks,Fecha fecha,int n, Gastos gasto, Habitacion habitacion, Piso piso) throws ParseException {
+    /**
+     * Método que recibe reservaciones y crea una lista de estos
+     *
+     * @param listaPacks
+     * @param fecha
+     * @param n
+     * @param gasto
+     * @param habitacion
+     * @param piso
+     * @throws ParseException
+     */
+
+    public void annadir(ListaPaquete listaPacks, Fecha fecha, int n, Gastos gasto, Habitacion habitacion, Piso piso) throws ParseException {
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
         System.out.println("Nombre del cliente ");
-        String nombre= leer.nextLine();
+        String nombre = leer.nextLine();
         System.out.println("Dui del cliente");
-        String dui=leer.nextLine();
+        String dui = leer.nextLine();
         System.out.println("Un telefono de contacto del cliente");
-        String telefono=leer.nextLine();
+        String telefono = leer.nextLine();
         System.out.println("Email del cliente");
-        String email=leer.nextLine();
-        Cliente cliente = new Cliente(nombre,dui, telefono, email);  
-        Paquete paquete= listaPacks.get(n);
-        if(habitacion.getEstado()=="disponible"){
-            Reservacion reserva = new Reservacion(cliente, paquete,fecha,n, gasto, habitacion, piso);
-            for(Reservacion r: listaReserva){
-                if(r.equals(reserva)){  //Se puede utilizar tambien hashcode para verificar solo por el dui
+        String email = leer.nextLine();
+        Cliente cliente = new Cliente(nombre, dui, telefono, email);
+        Paquete paquete = listaPacks.get(n);
+        if (habitacion.getEstado() == "disponible") {
+            Reservacion reserva = new Reservacion(cliente, paquete, fecha, n, gasto, habitacion, piso);
+            for (Reservacion r : listaReserva) {
+                if (r.equals(reserva)) {  //Se puede utilizar tambien hashcode para verificar solo por el dui
                     System.err.println("Esta reservacion se repite");
                     return;
                 }
             }
             listaReserva.add(reserva);
             habitacion.setEstado("ocupado");
+            habitacion.setFechaFinal(fecha.fechaFinal);
             System.out.println("Se annadio con exito");
-        }else{
-            System.err.println("Esta habitacion no esta disponible");
+        } else {
+            if (fecha.fechaInicial.compareTo(habitacion.getFechaFinal()) > 0) {
+                Reservacion reserva = new Reservacion(cliente, paquete, fecha, n, gasto, habitacion, piso);
+                for (Reservacion r : listaReserva) {
+                if (r.equals(reserva)) {  //Se puede utilizar tambien hashcode para verificar solo por el dui
+                    System.err.println("Esta reservacion se repite");
+                    return;
+                    }
+                }   
+                listaReserva.add(reserva);
+                habitacion.setEstado("ocupado");
+                habitacion.setFechaFinal(fecha.fechaFinal);
+                System.out.println("Se annadio con exito");
+            }
+            System.err.println("Esta habitacion no esta disponible en esta fecha");
         }
-        
     }
-    
-    /** 
-     * Método que recibe el total a pagar de los huéspedes y lo acumula
-     */
-    public void mostrarGanancias(){
+
+/**
+ * Método que recibe el total a pagar de los huéspedes y lo acumula
+ */
+public void mostrarGanancias(){
         int n=1;
         System.out.println("");
         for (Reservacion r: listaReserva){

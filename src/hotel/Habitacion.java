@@ -1,5 +1,7 @@
 package hotel;
 
+import java.util.Date;
+
 /**
  *
  * @author Cesar Rosales <00060917@uca.edu.sv>
@@ -12,6 +14,7 @@ public class Habitacion {
     public String tipo;
     public String estado;
     public float precioHab;
+    public Date fechaFinal;
 
     public Habitacion() {
     }
@@ -71,6 +74,14 @@ public class Habitacion {
 
     public void setPrecioHab(float precioHab) {
         this.precioHab = precioHab;
+    }
+
+    public Date getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
     }
 
     /**
