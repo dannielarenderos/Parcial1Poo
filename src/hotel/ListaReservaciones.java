@@ -70,8 +70,9 @@ public class ListaReservaciones {
                 habitacion.setEstado("ocupado");
                 habitacion.setFechaFinal(fecha.fechaFinal);
                 System.out.println("Se annadio con exito");
+            }else{
+                System.err.println("Esta habitacion no esta disponible en esta fecha");
             }
-            System.err.println("Esta habitacion no esta disponible en esta fecha");
         }
     }
 
