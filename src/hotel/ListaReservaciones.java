@@ -19,7 +19,16 @@ public class ListaReservaciones {
 
     public ListaReservaciones() {
     }
-        
+        /**
+         * Método que recibe reservaciones y crea una lista de estos
+         * @param listaPacks
+         * @param fecha
+         * @param n
+         * @param gasto
+         * @param habitacion
+         * @param piso
+         * @throws ParseException 
+         */
 
     public void annadir(ListaPaquete listaPacks,Fecha fecha,int n, Gastos gasto, Habitacion habitacion, Piso piso) throws ParseException {
         Scanner leer = new Scanner(System.in);
@@ -50,6 +59,10 @@ public class ListaReservaciones {
         }
         
     }
+    
+    /** 
+     * Método que recibe el total a pagar de los huéspedes y lo acumula
+     */
     public void mostrarGanancias(){
         int n=1;
         System.out.println("");
@@ -59,6 +72,10 @@ public class ListaReservaciones {
             System.out.println("");
         }
     }
+    
+    /**
+     * Método que elimina una reservación por medio del dui del cliente
+     */
     public void eliminarReservacion(){
         Scanner leer = new Scanner(System.in);
         mostrar();
@@ -76,6 +93,9 @@ public class ListaReservaciones {
         System.err.println("Esta reservacion no existe");
     }
      
+    /**
+     * Método que muestra las reservaciones almacenadas en las listas
+     */
     public void mostrar() {
         int n=1;
         if(listaReserva.size()==0){
