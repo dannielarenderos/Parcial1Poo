@@ -22,9 +22,11 @@ public class Cliente extends Persona {
         this.dui = dui;
     }
 
-    public Cliente(String nombre, String dui) {
+    public Cliente(String nombre, String dui, String telefono, String email) {
         this.dui = dui;
         this.nombre = nombre;
+        this.telefono = telefono;
+        this.email= email;
     }
 
     public String getNombre() {
@@ -105,6 +107,6 @@ public class Cliente extends Persona {
     
     @Override
     public String toString() {
-        return "[Cliente{" + "nombre=" + nombre + ", dui=" + dui + "}]";
+        return "[Cliente{" + "nombre=" + nombre + ", dui=" + dui + ", telefono="+telefono+", email= "+email+"}]";
     }
 }

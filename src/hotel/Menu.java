@@ -95,7 +95,7 @@ public class Menu {
                                 opcionInterna = leer.nextInt();
                                 switch (opcionInterna) {
                                     case 1:
-                                        System.out.println(" Reservaciones activas");
+                                        System.out.println("Reservaciones activas");
                                         System.out.println("");
                                         listaReserva.mostrar();
                                         System.out.println("");
@@ -105,11 +105,7 @@ public class Menu {
                                         System.out.println(" Agregar nueva reservacion");
                                         System.out.println("");
 
-                                        System.out.println("Que paquete elegira?");
-                                        listaPack.mostrarPaquetes();
-                                        Scanner leer2 = new Scanner(System.in);
-                                        int n = leer2.nextInt();
-
+                                        int n=listaPack.NumPack();
                                         System.out.println("Ingrese el numero del piso que quiere reservar");
                                         int numpiso1 = leer.nextInt();
                                         System.out.println("Ingrese el numero de la habitacion que quiere reservar");
@@ -333,10 +329,7 @@ public class Menu {
                         }
                         break;
                 }
-                System.out.println("Por favor, ingrese un número del 1 al 6");
-                System.out.println(""); System.out.println("");
-
-
+                System.out.println("Que tenga un buen dia :)");
 
             } catch (InputMismatchException e) {
                 System.err.println("Por favor, Ingrese un número");

@@ -28,13 +28,17 @@ public class ListaReservaciones {
         String nombre= leer.nextLine();
         System.out.println("Dui del cliente");
         String dui=leer.nextLine();
-        Cliente cliente = new Cliente(nombre,dui);  
+        System.out.println("Un telefono de contacto del cliente");
+        String telefono=leer.nextLine();
+        System.out.println("Email del cliente");
+        String email=leer.nextLine();
+        Cliente cliente = new Cliente(nombre,dui, telefono, email);  
         Paquete paquete= listaPacks.get(n);
         if(habitacion.getEstado()=="disponible"){
             Reservacion reserva = new Reservacion(cliente, paquete,fecha,n, gasto, habitacion, piso);
             for(Reservacion r: listaReserva){
                 if(r.equals(reserva)){  //Se puede utilizar tambien hashcode para verificar solo por el dui
-                    System.out.println("Esta reservacion se repite");
+                    System.err.println("Esta reservacion se repite");
                     return;
                 }
             }
@@ -42,7 +46,7 @@ public class ListaReservaciones {
             habitacion.setEstado("ocupado");
             System.out.println("Se annadio con exito");
         }else{
-            System.out.println("Esta habitacion no esta disponible");
+            System.err.println("Esta habitacion no esta disponible");
         }
         
     }
@@ -54,6 +58,7 @@ public class ListaReservaciones {
     }
     public void eliminarReservacion(){
         Scanner leer = new Scanner(System.in);
+        mostrar();
         System.out.println("Ingrese el dui del cliente");
         String dui= leer.next();
         Cliente cliente= new Cliente(dui);
@@ -65,11 +70,15 @@ public class ListaReservaciones {
                 return;
             }
         }
-        System.out.println("Esta reservacion no existe");
+        System.err.println("Esta reservacion no existe");
     }
      
     public void mostrar() {
         int n=1;
+        if(listaReserva.size()==0){
+            System.out.println("No hay Reservaciones activas!!");
+            return;
+        }
         for(Reservacion r: listaReserva){
             System.out.println(n+". "+r.cliente.toString()+" "+r.paquete.toString()+" "+r.fecha.toString()+"Habitacion: "+r.habitacion.getCodigo()+" TOTAL =$"+r.gasto.Total());
             n++;

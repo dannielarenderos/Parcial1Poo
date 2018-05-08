@@ -18,13 +18,13 @@ public class Hotel {
         int flag=1;
         ListaUsuarios listaU= ListaUsuarios.getInstance();
         while(flag==1){
-            if(true){//TODO el funcionamiento parte luego del login listaU.Login()
+            if(listaU.Login()){//TODO el funcionamiento parte luego del login listaU.Login()
                 flag=0;
                 System.out.println("Sesion iniciada!");
                 Menu menu= Menu.getInstance();
                 menu.mostrar();
             }else{
-                System.out.println("Usuario o contrasennia invalido");
+                System.err.println("Usuario o contrasennia invalido");
             }
         }
     }
