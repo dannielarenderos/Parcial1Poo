@@ -105,7 +105,7 @@ public class Menu {
                                         System.out.println(" Agregar nueva reservacion");
                                         System.out.println("");
 
-                                        int n=listaPack.NumPack();
+                                        int n = listaPack.NumPack();
                                         System.out.println("Ingrese el numero del piso que quiere reservar");
                                         int numpiso1 = leer.nextInt();
                                         System.out.println("Ingrese el numero de la habitacion que quiere reservar");
@@ -200,7 +200,6 @@ public class Menu {
                                 System.out.print("¿Qué opción desea? ");
                                 System.out.println("");
 
-
                                 opcionInterna = leer.nextInt();
                                 switch (opcionInterna) {
                                     case 1:
@@ -211,12 +210,17 @@ public class Menu {
                                     case 2:
                                         System.out.println(" Habitaciones por estado");
                                         System.out.println("");
-                                        System.out.print("Ingrese el numero de piso: ");
-                                        int numPisoVer = leer.nextInt();
-                                        System.out.print("Ingrese el estado de las habitaciones a mostrar: ");
-                                        String estado = leer.next();
-                                        Piso pisoV = listaPisos.listaPisos.get(numPisoVer-1);
-                                        pisoV.mostrarHabitacionesPisoEstado(estado,0);
+                                        try {
+                                            System.out.print("Ingrese el numero de piso: ");
+                                            int numPisoVer = leer.nextInt();
+                                            System.out.print("Ingrese el estado de las habitaciones a mostrar: ");
+                                            String estado = leer.next();
+                                            Piso pisoV = listaPisos.listaPisos.get(numPisoVer - 1);
+                                            pisoV.mostrarHabitacionesPisoEstado(estado, 0);
+                                        } catch (InputMismatchException e) {
+                                            System.err.println("Por favor, Ingrese un número");
+                                            leer.nextLine();
+                                        }
                                         break;
                                     case 3:
                                         System.out.println(" Modificar precio de habitacion");
@@ -247,7 +251,7 @@ public class Menu {
                             }
                         }
                         break;
-                        
+
                     case 4:
                         opcionInterna = 0;
                         while (opcionInterna != 5) {
@@ -337,8 +341,8 @@ public class Menu {
                             }
                         }
                         break;
-                    }
-                    System.out.println("");
+                }
+                System.out.println("");
 
             } catch (InputMismatchException e) {
                 System.err.println("Por favor, Ingrese un número");
