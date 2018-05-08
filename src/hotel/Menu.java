@@ -10,7 +10,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *
+ * Menú principal 
  * @author Danniela Renderos
  */
 public class Menu {
