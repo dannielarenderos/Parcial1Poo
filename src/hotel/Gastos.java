@@ -21,7 +21,10 @@ public class Gastos {
         this.paquete = paquete;
         this.fecha = fecha;
     }
-
+/**
+ * Método que realiza la sumatoria de los gastos de un cliente.
+ * @return total a pagar.
+ */
     public float Total(){
         float total;
         total = (paquete.getPrecio()*fecha.getDias())+(fecha.getPrecioTemporada()*fecha.getDias());
