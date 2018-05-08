@@ -23,7 +23,9 @@ public class ListaPaquete {
         listaPaquetes.add(paqueteBasico);
         listaPaquetes.add(paquetePremium);
     }
-
+/**
+ * muestra cada uno de los paquetes con  su informacion
+ */
     public void mostrarPaquetes() {
         int n = 0;
         for (Paquete pack : listaPaquetes) {
@@ -31,7 +33,10 @@ public class ListaPaquete {
             n++;
         }
     }
-
+   
+/**
+ * agrega un paquete  con un nombre , servicios y precio nuevo
+ */
     public void agregarPaquete() {
         Scanner entrada2 = new Scanner(System.in);
         System.out.println("Escriba el nombre del nuevo Paquete");
@@ -43,7 +48,9 @@ public class ListaPaquete {
         listaPaquetes.add(paqueteNuevos);
 
     }
-
+ /**
+ * elimina un paquete que se encuentre en la listaPaquete
+ */
     public void eliminarPaquete() {
         Scanner entrada3 = new Scanner(System.in);
         mostrarPaquetes();
@@ -62,7 +69,9 @@ public class ListaPaquete {
         }
         System.err.println("Paquete no encontrado");
     }
-
+/**
+ * permite modificar determinado paquete, su nombre, sus servicios y su precio
+ */
     public void modificarPaquete() {
         Scanner entrada3 = new Scanner(System.in);
         System.out.println("Que paquete desea modificar(nombre)");
@@ -94,10 +103,18 @@ public class ListaPaquete {
         System.out.println("Paquete no encontrado");
 
     }
-
+/**
+ * permite acceder a determindo paquete 
+ * @param n
+ * @return Paquete 
+ */
     public Paquete get(int n) {
         return listaPaquetes.get(n);
     }
+     /**
+     * validar la cantidad de paquetes que existan para poder acceder a ellos 
+     * @return n
+     */
     public int NumPack(){
         while(true){
             mostrarPaquetes();
