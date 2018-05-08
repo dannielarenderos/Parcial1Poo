@@ -80,7 +80,7 @@ public class ListaPisos {
             }
         }
         if (cont == 0) {
-            System.out.println("No hay pisos correspondientes al estado \"" + estado + "\"");
+            System.err.println("No hay pisos correspondientes al estado \"" + estado + "\"");
         }
     }
 }
