@@ -109,14 +109,23 @@ public class Menu {
                                         int n = listaPack.NumPack();
                                         System.out.println("Ingrese el numero del piso que quiere reservar");
                                         int numpiso1 = leer.nextInt();
-                                        System.out.println("Ingrese el numero de la habitacion que quiere reservar");
-                                        int numhab1 = leer.nextInt();
-                                        Piso piso = listaPisos.listaPisos.get(numpiso1 - 1);
-                                        Habitacion hab = piso.piso.get(numhab1 - 1);
+                                        if (numpiso1 <= listaPisos.listaPisos.size()) {
+                                            System.out.println("Ingrese el numero de la habitacion que quiere reservar");
+                                            System.out.println("");
 
-                                        Fecha fecha = new Fecha(hab.getPrecioHab());
-                                        Gastos gasto = new Gastos(listaPack.get(n), fecha);
-                                        listaReserva.annadir(listaPack, fecha, n, gasto, hab, piso);
+                                            int numhab1 = leer.nextInt();
+                                            Piso piso = listaPisos.listaPisos.get(numpiso1 - 1);
+                                            if (numhab1 <= piso.piso.size()) {
+                                                Habitacion hab = piso.piso.get(numhab1 - 1);
+                                                Fecha fecha = new Fecha(hab.getPrecioHab());
+                                                Gastos gasto = new Gastos(listaPack.get(n), fecha);
+                                                listaReserva.annadir(listaPack, fecha, n, gasto, hab, piso);
+                                            } else {
+                                                System.err.println("El numero de habitacion ingresado no existe, intente con otro");
+                                            }
+                                        } else {
+                                            System.err.println("El numero de piso ingresado no existe");
+                                        }
                                         break;
                                     case 3:
                                         System.out.println(" Eliminar Reservacion ");
@@ -193,6 +202,7 @@ public class Menu {
                         opcionInterna = 0;
                         while (opcionInterna != 5) {
                             try {
+
                                 System.out.println("-----HABITACIONES-----");
                                 System.out.println("1. Ver habitaciones");
                                 System.out.println("2. Ver habitaciones por estado");
@@ -216,35 +226,57 @@ public class Menu {
                                         try {
                                             System.out.print("Ingrese el numero de piso: ");
                                             int numPisoVer = leer.nextInt();
-                                            System.out.print("Ingrese el estado de las habitaciones a mostrar: ");
-                                            String estado = leer.next();
-                                            Piso pisoV = listaPisos.listaPisos.get(numPisoVer - 1);
-                                            pisoV.mostrarHabitacionesPisoEstado(estado, 0);
+                                            if (numPisoVer <= listaPisos.listaPisos.size()) {
+                                                System.out.print("Ingrese el estado de las habitaciones a mostrar: ");
+                                                String estado = leer.next();
+                                                Piso pisoV = listaPisos.listaPisos.get(numPisoVer - 1);
+                                                pisoV.mostrarHabitacionesPisoEstado(estado, 0);
+                                            } else {
+                                                System.err.println("El numero de piso ingresado no existe");
+                                            }
                                         } catch (InputMismatchException e) {
                                             System.err.println("Por favor, Ingrese un número");
                                             leer.nextLine();
                                         }
                                         break;
                                     case 3:
-                                        System.out.println(" Modificar precio de habitacion");
-                                        System.out.println("");
-                                        System.out.println("Ingrese el nuevo precio base de la habitacion");
-                                        float precioB = leer.nextFloat();
-                                        listaPisos.precioBaseHotel(precioB);
+                                        try {
+                                            System.out.println(" Modificar precio de habitacion");
+                                            System.out.println("");
+                                            System.out.println("Ingrese el nuevo precio base de la habitacion");
+                                            float precioB = leer.nextFloat();
+                                            listaPisos.precioBaseHotel(precioB);
+                                        } catch (InputMismatchException e) {
+                                            System.err.println("Por favor, Ingrese un número");
+                                            leer.nextLine();
+                                        }
                                         break;
                                     case 4:
-                                        System.out.println(" Modificar estado de habitacion ");
-                                        System.out.println("");
-                                        System.out.println("Ingrese el numero del piso que quiere modificar");
-                                        int numPiso2 = leer.nextInt();
-                                        System.out.println("Ingrese el numero de la habitacion que quiere modificar");
-                                        int numHab = leer.nextInt();
-                                        Piso piso = listaPisos.listaPisos.get(numPiso2 - 1);
-                                        Habitacion hab = piso.piso.get(numHab - 1);
-                                        hab.mostrar(hab);
-                                        hab.setEstado("mantenimiento");
-                                        hab.mostrar(hab);
-                                        System.out.println("Estado modificado con exito");
+                                        try {
+                                            System.out.println(" Modificar estado de habitacion ");
+                                            System.out.println("");
+                                            System.out.println("Ingrese el numero del piso que quiere modificar");
+                                            int numPiso2 = leer.nextInt();
+                                            if (numPiso2 <= listaPisos.listaPisos.size()) {
+                                                System.out.println("Ingrese el numero de la habitacion que quiere modificar");
+                                                int numHab = leer.nextInt();
+                                                Piso piso = listaPisos.listaPisos.get(numPiso2 - 1);
+                                                if (numHab <= piso.piso.size()) {
+                                                    Habitacion hab = piso.piso.get(numHab - 1);
+                                                    hab.mostrar(hab);
+                                                    hab.setEstado("mantenimiento");
+                                                    hab.mostrar(hab);
+                                                    System.out.println("Estado modificado con exito");
+                                                } else {
+                                                    System.err.println("El numero de habitacion no existe");
+                                                }
+                                            } else {
+                                                System.err.println("El numero de piso no existe");
+                                            }
+                                        } catch (InputMismatchException e) {
+                                            System.err.println("Por favor, Ingrese un número");
+                                            leer.nextLine();
+                                        }
                                         break;
 
                                 }
@@ -284,34 +316,49 @@ public class Menu {
                                         listaPisos.mostrarPisosEstado(estadoV);
                                         break;
                                     case 3:
-                                        System.out.println(" Modificar estado de piso ");
-                                        System.out.println("");
-                                        System.out.println("Ingrese el numero del piso que quiere modificar");
-                                        int numpiso = leer.nextInt();
-                                        Piso floor = listaPisos.listaPisos.get(numpiso - 1);
-                                        floor.setEstado("mantenimiento");
-                                        System.out.println("Estado modificado con exito");
+                                        try {
+                                            System.out.println(" Modificar estado de piso ");
+                                            System.out.println("");
+                                            System.out.println("Ingrese el numero del piso que quiere modificar");
+                                            int numpiso = leer.nextInt();
+                                            if (numpiso <= listaPisos.listaPisos.size()) {
+                                                Piso floor = listaPisos.listaPisos.get(numpiso - 1);
+                                                floor.setEstado("mantenimiento");
+                                                System.out.println("Estado modificado con exito");
+                                            } else {
+                                                System.err.println("El piso ingresado no existe");
+                                            }
+                                        } catch (InputMismatchException e) {
+                                            System.err.println("Por favor, Ingrese un número");
+                                            leer.nextLine();
+                                        }
                                         break;
                                     case 4:
-                                        System.out.println(" Agregar nuevo piso ");
-                                        System.out.println("");
-                                        System.out.println("Cuantos pisos desea ingresar");
-                                        int pisoExtra = leer.nextInt();
-                                        System.out.println("Cuantas habitaciones desea ingresar");
-                                        int habExtra = leer.nextInt();
-                                        for (int i = 1; i <= pisoExtra; i++) {
-                                            Piso floor2 = new Piso();
-                                            if (i >= 1 && i <= 26) {
-                                                ascii = 64 + i + cantPiso;
-                                                letra = Character.toString((char) ascii);
-                                                floor2.add(habExtra, letra, precioBase);
-                                                floor2.setLetra(letra);
+                                        try {
+                                            System.out.println(" Agregar nuevo piso ");
+                                            System.out.println("");
+                                            System.out.println("Cuantos pisos desea ingresar");
+                                            int pisoExtra = leer.nextInt();
+                                            System.out.println("Cuantas habitaciones desea ingresar");
+                                            int habExtra = leer.nextInt();
+                                            for (int i = 1; i <= pisoExtra; i++) {
+                                                Piso floor2 = new Piso();
+                                                if (i >= 1 && i <= 26) {
+                                                    ascii = 64 + i + cantPiso;
+                                                    letra = Character.toString((char) ascii);
+                                                    floor2.add(habExtra, letra, precioBase);
+                                                    floor2.setLetra(letra);
+                                                }
+                                                floor2.setNumero(i + cantPiso);
+                                                floor2.setEstado("disponible");
+                                                //floor2.precioBase(precioBase);
+                                                listaPisos.add(floor2);
+                                                listaPisos.precioBaseHotel(precioBase);
                                             }
-                                            floor2.setNumero(i + cantPiso);
-                                            floor2.setEstado("disponible");
-                                            //floor2.precioBase(precioBase);
-                                            listaPisos.add(floor2);
-                                            listaPisos.precioBaseHotel(precioBase);
+                                            cantPiso += pisoExtra;
+                                        } catch (InputMismatchException e) {
+                                            System.err.println("Por favor, Ingrese un número");
+                                            leer.nextLine();
                                         }
                                         break;
                                 }
