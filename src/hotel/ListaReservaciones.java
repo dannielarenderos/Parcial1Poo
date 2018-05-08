@@ -59,7 +59,7 @@ public class ListaReservaciones {
     public void eliminarReservacion(){
         Scanner leer = new Scanner(System.in);
         mostrar();
-        System.out.println("Ingrese el dui del cliente");
+        System.out.println("\nIngrese el dui del cliente");
         String dui= leer.next();
         Cliente cliente= new Cliente(dui);
         for (int i=0; i<listaReserva.size();i++){
@@ -80,7 +80,7 @@ public class ListaReservaciones {
             return;
         }
         for(Reservacion r: listaReserva){
-            System.out.println(n+". "+r.cliente.toString()+" "+r.paquete.toString()+" "+r.fecha.toString()+"Habitacion: "+r.habitacion.getCodigo()+" TOTAL =$"+r.gasto.Total());
+            System.out.println(n+". "+r.cliente.toString()+""+r.paquete.toString()+"\n"+r.fecha.toString()+"\nNumero de habitacion: "+r.habitacion.getCodigo()+"\nTOTAL neto =$"+r.gasto.Total());
             n++;
         }
     }  

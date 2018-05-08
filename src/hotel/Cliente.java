@@ -107,6 +107,6 @@ public class Cliente extends Persona {
     
     @Override
     public String toString() {
-        return "[Cliente{" + "nombre=" + nombre + ", dui=" + dui + ", telefono="+telefono+", email= "+email+"}]";
+        return "\nDatos del cliente:\n" + "+Nombre:" + nombre + ", +Dui:" + dui + ", +Telefono:"+telefono+", +Email: "+email+"\n";
     }
 }

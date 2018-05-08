@@ -80,7 +80,7 @@ public class Menu {
 
                 switch (opcion) {
                     case 1:
-
+                        opcionInterna = 0;
                         while (opcionInterna != 4) {
                             try {
                                 System.out.println("-----RESERVACIONES-----");
@@ -133,7 +133,7 @@ public class Menu {
                         break;
 
                     case 2:
-
+                        opcionInterna = 0;
                         while (opcionInterna != 5) {
 
                             try {
@@ -187,7 +187,7 @@ public class Menu {
                         }
                         break;
                     case 3:
-
+                        opcionInterna = 0;
                         while (opcionInterna != 5) {
                             try {
                                 System.out.println("-----HABITACIONES-----");
@@ -243,6 +243,7 @@ public class Menu {
                         break;
                         
                     case 4:
+                        opcionInterna = 0;
                         while (opcionInterna != 5) {
                             try {
                                 System.out.println("-----PISOS-----");
@@ -305,7 +306,7 @@ public class Menu {
                         }
                         break;
                     case 5:
-
+                        opcionInterna = 0;
                         while (opcionInterna != 2) {
                             try {
                                 System.out.println(" -----INVENTARIO-----");
@@ -318,7 +319,6 @@ public class Menu {
                                         System.out.println(" Regristo de ganancias ");
                                         System.out.println("");
                                         listaReserva.mostrarGanancias();
-
                                         break;
 
                                 }
@@ -328,8 +328,8 @@ public class Menu {
                             }
                         }
                         break;
-                }
-                System.out.println("Que tenga un buen dia :)");
+                    }
+                    System.out.println("");
 
             } catch (InputMismatchException e) {
                 System.err.println("Por favor, Ingrese un número");
@@ -337,5 +337,6 @@ public class Menu {
             }
 
         }
+        System.out.println("Que tenga un buen dia :)");
     }
 }

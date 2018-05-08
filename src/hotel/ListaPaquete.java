@@ -33,8 +33,9 @@ public class ListaPaquete {
     }
 
     public void agregarPaquete() {
+        Scanner entrada2 = new Scanner(System.in);
         System.out.println("Escriba el nombre del nuevo Paquete");
-        String nombrePaquete = entrada.nextLine();
+        String nombrePaquete = entrada2.nextLine();
         System.out.println("Ingrese el precio del nuevo paquete");
         int precioPaquete = entrada.nextInt();
         ListaServicios listaServiciosNuevos = new ListaServicios("custom");
