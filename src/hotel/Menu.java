@@ -29,17 +29,18 @@ public class Menu {
 
     public void opciones() {
 
-        System.out.println("----- Bienvenido al Hotel Viña Raffiña -----");
+        System.out.println("----- BIENVENIDO AL HOTEL VIÑA RAFFIÑA -----");
         System.out.println("");
-        System.out.println("----- Menu Hotel Viña Raffiña -----");
+        System.out.println("----- MENÚ -----");
         System.out.println("");
         System.out.println("1. Reservaciones");
-        System.out.println("2. Pisos");
+        System.out.println("2. Paquetes");
         System.out.println("3. Habitaciones");
-        System.out.println("4. Paquetes");
+        System.out.println("4. Pisos");
         System.out.println("5. Inventario");
         System.out.println("6. Salir");
         System.out.println("");
+        System.out.print("¿Qué opción desea? ");
 
     }
 
@@ -82,19 +83,23 @@ public class Menu {
 
                         while (opcionInterna != 4) {
                             try {
-                                System.out.println("1. -----RESERVACIONES-----");
+                                System.out.println("-----RESERVACIONES-----");
                                 System.out.println("1. Ver reservaciones activas");
                                 System.out.println("2. Agregar Reservacion");
                                 System.out.println("3. Eliminar reservacion");
                                 System.out.println("4. Volver al menu principal");
                                 System.out.println("");
+                                System.out.print("¿Qué opción desea? ");
+                                System.out.println("");
+
                                 opcionInterna = leer.nextInt();
                                 switch (opcionInterna) {
                                     case 1:
                                         System.out.println(" Reservaciones activas");
                                         System.out.println("");
-
                                         listaReserva.mostrar();
+                                        System.out.println("");
+
                                         break;
                                     case 2:
                                         System.out.println(" Agregar nueva reservacion");
@@ -130,42 +135,57 @@ public class Menu {
                             }
                         }
                         break;
-                    case 2:
-                        System.out.println("1. -----PAQUETES-----");
-                        System.out.println("1. Ver paquetes disponibles");
-                        System.out.println("2. Modificar paquetes");
-                        System.out.println("3. Agregar paquete");
-                        System.out.println("4. Eliminar paquete");
-                        System.out.println("");
 
-                        while (opcionInterna != 4) {
+                    case 2:
+
+                        while (opcionInterna != 5) {
+
                             try {
+                                System.out.println("-----PAQUETES-----");
+                                System.out.println("1. Ver paquetes disponibles");
+                                System.out.println("2. Modificar paquetes");
+                                System.out.println("3. Agregar paquete");
+                                System.out.println("4. Eliminar paquete");
+                                System.out.println("5. Volver al menu principal");
+                                System.out.println("");
+                                System.out.print("¿Qué opción desea? ");
+                                System.out.println("");
+
                                 opcionInterna = leer.nextInt();
                                 switch (opcionInterna) {
                                     case 1:
                                         System.out.println(" Paquetes disponibles ");
                                         System.out.println("");
                                         listaPack.mostrarPaquetes();
+                                        System.out.println("");
+
                                         break;
                                     case 2:
                                         System.out.println(" Modificar paquete");
                                         System.out.println("");
                                         listaPack.mostrarPaquetes();
+                                        System.out.println("");
+
                                         listaPack.modificarPaquete();
+
                                         break;
                                     case 3:
                                         System.out.println(" Agregar paquete ");
                                         System.out.println("");
                                         listaPack.agregarPaquete();
+                                        System.out.println("");
+
                                         break;
                                     case 4:
                                         System.out.println(" Eliminar paquete ");
                                         System.out.println("");
                                         listaPack.eliminarPaquete();
+                                        System.out.println("");
+
                                         break;
                                 }
                             } catch (InputMismatchException e) {
-                                System.err.println("Por favor, Ingrese un número del 1 al 4");
+                                System.err.println("Por favor, Ingrese un número del 1 al 5");
                                 leer.nextLine();
                             }
                         }
@@ -174,13 +194,16 @@ public class Menu {
 
                         while (opcionInterna != 5) {
                             try {
-                                System.out.println("1. -----HABITACIONES-----");
+                                System.out.println("-----HABITACIONES-----");
                                 System.out.println("1. Ver habitaciones");
                                 System.out.println("2. Ver habitaciones por estado");
                                 System.out.println("3. Modificar precio de habitaciones");
                                 System.out.println("4. Modificar estado de habitaciones");
                                 System.out.println("5. Volver al menu principal");
                                 System.out.println("");
+                                System.out.print("¿Qué opción desea? ");
+                                System.out.println("");
+
 
                                 opcionInterna = leer.nextInt();
                                 switch (opcionInterna) {
@@ -222,19 +245,20 @@ public class Menu {
                             }
                         }
                         break;
-
-//Resto de cases                  
+                        
                     case 4:
-
-                        System.out.println("1. -----PISOS-----");
-                        System.out.println("1. Ver pisos activos");
-                        System.out.println("2. Ver pisos por estado");
-                        System.out.println("3. Modificar estado de piso");
-                        System.out.println("4. Ampliar hotel: Agregar piso");
-                        System.out.println("");
-
-                        while (opcionInterna != 4) {
+                        while (opcionInterna != 5) {
                             try {
+                                System.out.println("-----PISOS-----");
+                                System.out.println("1. Ver pisos activos");
+                                System.out.println("2. Ver pisos por estado");
+                                System.out.println("3. Modificar estado de piso");
+                                System.out.println("4. Ampliar hotel: Agregar piso");
+                                System.out.println("5. Volver al menu principal");
+                                System.out.println("");
+                                System.out.print("¿Qué opción desea? ");
+                                System.out.println("");
+
                                 opcionInterna = leer.nextInt();
                                 switch (opcionInterna) {
                                     case 1:
@@ -279,17 +303,19 @@ public class Menu {
                                         break;
                                 }
                             } catch (InputMismatchException e) {
-                                System.err.println("Por favor, Ingrese un número del 1 al 4");
+                                System.err.println("Por favor, Ingrese un número del 1 al 5");
                                 leer.nextLine();
                             }
                         }
                         break;
                     case 5:
-                        System.out.println("1. -----INVENTARIO-----");
-                        System.out.println("");
 
-                        while (opcionInterna != 1) {
+                        while (opcionInterna != 2) {
                             try {
+                                System.out.println(" -----INVENTARIO-----");
+                                System.out.println("1. Ver inventario  ");
+                                System.out.println("2. Volver al menu principal");
+                                System.out.println("");
                                 opcionInterna = leer.nextInt();
                                 switch (opcionInterna) {
                                     case 1:
@@ -301,12 +327,17 @@ public class Menu {
 
                                 }
                             } catch (InputMismatchException e) {
-                                System.err.println("Por favor, Ingrese el numero 1");
+                                System.err.println("Por favor, Ingrese un numero del 1 al 2 ");
                                 leer.nextLine();
                             }
                         }
                         break;
                 }
+                System.out.println("Por favor, ingrese un número del 1 al 6");
+                System.out.println(""); System.out.println("");
+
+
+
             } catch (InputMismatchException e) {
                 System.err.println("Por favor, Ingrese un número");
                 leer.nextLine();
