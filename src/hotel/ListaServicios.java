@@ -56,7 +56,9 @@ public class ListaServicios {
 
     }
 
-
+/**
+ * Permite  agregar un nuevo servicio a la listaServicio y al mismo tiempo valida si el servicio a ingresar ya existe o no
+ */
 public void AgregarNuevoServicio() {
         System.out.println("Ingrese el nombre del nuevo servicio");
         Servicio servicio = new Servicio(entrada.nextLine());
@@ -69,7 +71,10 @@ public void AgregarNuevoServicio() {
         listaServicio.add(servicio);
         System.out.println("Se agrego con exito el servicio");
     }
-
+/**
+ * muestra los servicios
+ * @return servicio
+ */
     public String mostrar() {
         String palabras = "";
         for (Servicio s : listaServicio) {
@@ -77,7 +82,9 @@ public void AgregarNuevoServicio() {
         }
         return palabras;
     }
-
+/**
+ * elimina determinado servicio
+ */
     public void eliminar() {
         System.out.println("que servicio desea eliminar");
         Servicio servicio = new Servicio(entrada.nextLine());

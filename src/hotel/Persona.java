@@ -17,7 +17,9 @@ public class Persona {
     public String dui;
     public String telefono;
     public String email;
-
+/** 
+ * Metodos setters & getters
+ */
     public String getNombre() {
         return nombre;
     }
@@ -55,7 +57,10 @@ public class Persona {
         int hash = 7;
         return hash;
     }
-
+/**
+ * Funcion equal para comparar la instancia de una persona con otra instancia de persona tomando en cuenta solo los atributos nombre y dui
+ * @return True: Si los objetos son identicos, False: Cualquier otro caso.
+ */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

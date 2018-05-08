@@ -76,7 +76,7 @@ public class Piso {
         return "Piso{" + "Letra=" + letra + " Numero=" + numero + " Estado=" + estado + " Precio de piso=" + precioPiso + '}';
     }
 
-    public void add(int cantHab, String letra,float precio) {
+    public void add(int cantHab, String letra, float precio) {
         for (int i = 1; i <= cantHab; i++) {
             String tipo;
             if (i % 2 == 0) {
@@ -96,7 +96,6 @@ public class Piso {
      * @param habitacion
      */
     public void add(Habitacion habitacion) {
-        //String codigo = "A" + String.valueOf(num);
         piso.add(habitacion);
 
     }
@@ -111,17 +110,36 @@ public class Piso {
     }
 
     /**
-     * Muestra los datos de un piso que le mandemos como parametro
+     * Muestra la información de las habitaciones de un piso
      */
     public void mostrar() {
         for (Habitacion h : piso) {
             System.out.println(h.toString());
         }
     }
-    
-    public void precioBase(float precio){
+    /**
+     * Asigna el precio a las habitaciones dependiendo del piso
+     * @param precio 
+     */
+    public void precioBase(float precio) {
         for (Habitacion h : piso) {
             h.setPrecioHab(precio);
+        }
+    }
+    /**
+     * Muestra las habitaciones de un piso que tienen un estado en especifico 
+     * @param estado
+     * @param cont 
+     */
+    public void mostrarHabitacionesPisoEstado(String estado, int cont) {
+        for (Habitacion h : piso) {
+            if (h.getEstado().equals(estado.toLowerCase())) {
+                cont++;
+                h.mostrar(h);
+            }
+        }
+        if (cont == 0) {
+            System.err.println("No hay habitaciones correspondientes al estado \"" + estado + "\" en el piso");
         }
     }
 }

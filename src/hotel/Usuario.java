@@ -20,7 +20,11 @@ public class Usuario {
     
     public Usuario() {
     }
-
+/**
+ * Constructor sobrecargado para clase Usuario
+ * @param usuario Nombre de usuario usado para el login
+ * @param password  Contrasennia usada para el login
+ */
     public Usuario(String usuario, String password) {
         this.usuario = usuario;
         this.password = password;

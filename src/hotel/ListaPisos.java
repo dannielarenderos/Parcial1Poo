@@ -44,7 +44,11 @@ public class ListaPisos {
             p.mostrar();
         }
     }
-
+    /**
+     * Asigna el precio a los pisos del hotel
+     * Aumenta el precio de los dos ultimos pisos en un 10%
+     * @param precio 
+     */
     public void precioBaseHotel(float precio) {
         for (Piso p : listaPisos) {
             p.setPrecioPiso(precio);
@@ -52,15 +56,31 @@ public class ListaPisos {
         }
         int numPiso = listaPisos.size();
 
-        Piso ultimoPiso=listaPisos.get(numPiso-1);
-        Piso penulPiso=listaPisos.get(numPiso-2);
+        Piso ultimoPiso = listaPisos.get(numPiso - 1);
+        Piso penulPiso = listaPisos.get(numPiso - 2);
         listaPisos.get(numPiso - 2).setPrecioPiso((float) (precio * 1.1));
         listaPisos.get(numPiso - 1).setPrecioPiso((float) (precio * 1.1));
-        for(Habitacion h:ultimoPiso.getPiso()){
-            h.setPrecioHab((float)(precio*1.1));
+        for (Habitacion h : ultimoPiso.getPiso()) {
+            h.setPrecioHab((float) (precio * 1.1));
         }
-        for(Habitacion h:penulPiso.getPiso()){
-            h.setPrecioHab((float)(precio*1.1));
+        for (Habitacion h : penulPiso.getPiso()) {
+            h.setPrecioHab((float) (precio * 1.1));
+        }
+    }
+    /**
+     * Muestra los pisos que tienen un estado en especifico
+     * @param estado 
+     */
+    public void mostrarPisosEstado(String estado) {
+        int cont = 0;
+        for (Piso p : listaPisos) {
+            if (p.getEstado().equals(estado.toLowerCase())) {
+                cont++;
+                p.mostrar(p);
+            }
+        }
+        if (cont == 0) {
+            System.err.println("No hay pisos correspondientes al estado \"" + estado + "\"");
         }
     }
 }
