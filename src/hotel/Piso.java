@@ -139,7 +139,7 @@ public class Piso {
             }
         }
         if (cont == 0) {
-            System.out.println("No hay habitaciones correspondientes al estado \"" + estado + "\" en el piso");
+            System.err.println("No hay habitaciones correspondientes al estado \"" + estado + "\" en el piso");
         }
     }
 }
