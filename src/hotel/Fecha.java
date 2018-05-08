@@ -97,7 +97,7 @@ class Fecha {
 
     @Override
     public String toString() {
-        return "Fecha{" + "dias=" + dias + ", fechaInicial=" + fechaInicial + ", fechaFinal=" + fechaFinal + '}';
+        return "Fecha:" + "Dias de estadia: " + dias + ", Check-in:" + fechaInicial + ", Check-out:" + fechaFinal;
     }
 
 }
