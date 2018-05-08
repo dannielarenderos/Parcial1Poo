@@ -12,23 +12,36 @@ import java.util.Objects;
  * @author OLMEDO <00097017@uca.edu.sv>
  */
 public class Cliente extends Persona {
-  
-    //Gastos gastos;
 
-
+/**
+ * Constructor vacio
+ */
     public Cliente() {
     }
+    /**
+     * Constructor solamente con atributo Dui(usado para pruebas)
+     * @param dui 
+     */
     public Cliente(String dui) {
         this.dui = dui;
     }
-
+/**
+ * Constructor sobrecargado con todos los atributos heredados de la clase Persona
+ * @param nombre
+ * @param dui
+ * @param telefono
+ * @param email 
+ */
     public Cliente(String nombre, String dui, String telefono, String email) {
         this.dui = dui;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email= email;
     }
-
+/**
+ * Metodos Setters & Getters
+ * @return 
+ */
     public String getNombre() {
         return nombre;
     }
@@ -60,13 +73,21 @@ public class Cliente extends Persona {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+    /**
+     * Metodo hashacode usado para comparar dos objetos de la clase Cliente
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 67 * hash + Objects.hashCode(this.dui);
         return hash;
     }
+    /**
+     * Metodo equals usado para comparar dos objetos Cliente tomando solo en cuenta el atributo Dui
+     * @param obj
+     * @return 
+     */
     
     public boolean equals2(Object obj) {
         if (this == obj) {
@@ -85,6 +106,11 @@ public class Cliente extends Persona {
         }
         return true;
     }
+    /**
+     * Metodo equals usado para comparar dos objetos Cliente tomando solo en cuenta el atributo Dui y Nombre
+     * @param obj
+     * @return 
+     */
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;

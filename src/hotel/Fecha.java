@@ -20,16 +20,17 @@ class Fecha {
     float PrecioTemporada;
     Date fechaInicial;
     Date fechaFinal;
-    boolean valFecha=true ;
+    boolean valFecha = true;
 
     public Fecha(float PrecioBaseHabitacion) throws ParseException {
         int flag = 1;
         Scanner entrada = new Scanner(System.in);
+
         System.out.println("Ingrese la fecha inicial de reserva en formato YYYY-MM-DD");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fechaIni = entrada.nextLine();
 
-        while (validarFecha(fechaIni)==false) {
+        while (validarFecha(fechaIni) == false) {
             System.out.println("Ingrese la fecha inicial en el formato correcto yyyy-MM-dd");
             fechaIni = entrada.nextLine();
 
@@ -37,7 +38,7 @@ class Fecha {
 
         System.out.println("Ingrese la fecha final de reserva en formato YYYY-MM-DD");
         String fechaFin = entrada.nextLine();
-        while (validarFecha(fechaFin)==false) {
+        while (validarFecha(fechaFin) == false) {
             System.out.println("Ingrese la fecha final en el formato correcto yyyy-MM-dd");
             fechaFin = entrada.nextLine();
 
@@ -79,11 +80,20 @@ class Fecha {
                 this.fechaFinal = fechaFinal;
                 this.fechaInicial = fechaInicial;
             } else {
-                System.out.println("La reservacion tiene que ser menor a 7 dias ");
+                System.err.println("Su reservacion tiene que ser menor a 7 dias");
                 System.out.println("Ingrese la fecha inicial de reserva en formato YYYY-MM-DD");
                 fechaIni = entrada.nextLine();
+                while (validarFecha(fechaIni) == false) {
+                    System.out.println("Ingrese la fecha inicial en el formato correcto yyyy-MM-dd");
+                    fechaIni = entrada.nextLine();
+                }
+
                 System.out.println("Ingrese la fecha final de reserva en formato YYYY-MM-DD");
                 fechaFin = entrada.nextLine();
+                while (validarFecha(fechaFin) == false) {
+                    System.out.println("Ingrese la fecha final en el formato correcto yyyy-MM-dd");
+                    fechaFin = entrada.nextLine();
+                }
                 fechaInicial = dateFormat.parse(fechaIni);
                 fechaFinal = dateFormat.parse(fechaFin);
                 dias = (int) ((fechaFinal.getTime() - fechaInicial.getTime()) / 86400000);
@@ -121,7 +131,7 @@ class Fecha {
 
     @Override
     public String toString() {
-        return "Fecha{" + "dias=" + dias + ", fechaInicial=" + fechaInicial + ", fechaFinal=" + fechaFinal + '}';
+        return "Fecha:" + "Dias de estadia: " + dias + ", Check-in:" + fechaInicial + ", Check-out:" + fechaFinal;
     }
 
 }

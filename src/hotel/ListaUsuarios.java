@@ -17,6 +17,9 @@ public class ListaUsuarios {
     private static ListaUsuarios lista;
     
     ArrayList<Usuario> listaUser = new ArrayList<>();
+    /**
+     * Constructor que creara los usuarios por defecto que podran iniciar sesion
+     */
     
     private ListaUsuarios(){
         Usuario usuario1= new Usuario("Rafi","124raf");
@@ -25,13 +28,20 @@ public class ListaUsuarios {
         listaUser.add(usuario2);
         //System.out.println(listaUser.get(0).getUsuario()+" "+listaUser.get(0).getPassword());
     }
-
+    /**
+     * Metodo estatico Singleton para asegurar solo una instanciacion de esta clase
+     * @return lista: Lista de usuarios que podran logearse
+     */
     public static ListaUsuarios getInstance() {
         if (lista == null) {
             lista = new ListaUsuarios();
         }
         return lista;
     }
+    /**
+     * Metodo usado al principio de la ejecucion para poder ingresar al sistema
+     * @return 
+     */
     public boolean Login(){
         Scanner leer = new Scanner(System.in);
         String user, pass;

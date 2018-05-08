@@ -53,7 +53,7 @@ public class Paquete {
 
     @Override
     public String toString() {
-        return "Datos del paquete:\n" + "+Nombre:" + tipo + ", +Servicios disponibles:" + servicios.mostrar() + ", +Precio diario:" + precio + "\n";
+        return "Datos del paquete:\n" + "+Nombre:" + tipo + ", +Servicios disponibles:" + servicios.mostrar() + ", +Precio diario:$" + precio + "\n";
     }
 
     @Override

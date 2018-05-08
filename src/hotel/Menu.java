@@ -81,13 +81,14 @@ public class Menu {
                 switch (opcion) {
                     case 1:
                         opcionInterna = 0;
-                        while (opcionInterna != 4) {
+                        while (opcionInterna != 5) {
                             try {
                                 System.out.println("-----RESERVACIONES-----");
                                 System.out.println("1. Ver reservaciones activas");
                                 System.out.println("2. Agregar Reservacion");
                                 System.out.println("3. Eliminar reservacion");
-                                System.out.println("4. Volver al menu principal");
+                                System.out.println("4. Ver ganancias por hospedaje");
+                                System.out.println("5. Volver al menu principal");
                                 System.out.println("");
                                 System.out.print("¿Qué opción desea? ");
                                 System.out.println("");
@@ -121,12 +122,14 @@ public class Menu {
                                         System.out.println(" Eliminar Reservacion ");
                                         System.out.println("");
                                         listaReserva.eliminarReservacion();
-
+                                        break;
+                                    case 4:
+                                        listaReserva.mostrarGanancias();
                                         break;
                                 }
 
                             } catch (InputMismatchException e) {
-                                System.err.println("Por favor, Ingrese un número del 1 al 4");
+                                System.err.println("Por favor, Ingrese un número del 1 al 5");
                                 leer.nextLine();
                             }
                         }
