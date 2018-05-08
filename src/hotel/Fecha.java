@@ -20,22 +20,35 @@ class Fecha {
     float PrecioTemporada;
     Date fechaInicial;
     Date fechaFinal;
+    boolean valFecha=true ;
 
     public Fecha(float PrecioBaseHabitacion) throws ParseException {
-        int flag=1;
+        int flag = 1;
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese la fecha inicial de reserva en formato YYYY-MM-DD");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fechaIni = entrada.nextLine();
+
+        while (validarFecha(fechaIni)==false) {
+            System.out.println("Ingrese la fecha inicial en el formato correcto yyyy-MM-dd");
+            fechaIni = entrada.nextLine();
+
+        }
+
         System.out.println("Ingrese la fecha final de reserva en formato YYYY-MM-DD");
         String fechaFin = entrada.nextLine();
+        while (validarFecha(fechaFin)==false) {
+            System.out.println("Ingrese la fecha final en el formato correcto yyyy-MM-dd");
+            fechaFin = entrada.nextLine();
+
+        }
 
         Date fechaInicial = dateFormat.parse(fechaIni);
         Date fechaFinal = dateFormat.parse(fechaFin);
 
         int dias = (int) ((fechaFinal.getTime() - fechaInicial.getTime()) / 86400000);
         int mes = fechaInicial.getMonth() + 1;
-        while (flag==1) {
+        while (flag == 1) {
             if (dias <= 7) {
                 float PrecioTemporada = 0;
                 switch (mes) {
@@ -60,7 +73,7 @@ class Fecha {
                     default:
                         System.out.println("El mes ingresado no es válido");
                 }
-                flag=0;
+                flag = 0;
                 this.dias = dias;
                 this.PrecioTemporada = PrecioTemporada;
                 this.fechaFinal = fechaFinal;
@@ -77,6 +90,17 @@ class Fecha {
                 mes = fechaInicial.getMonth() + 1;
             }
         }
+    }
+
+    public static boolean validarFecha(String fecha) {
+        try {
+            SimpleDateFormat formFecha = new SimpleDateFormat("yyyy-MM-dd");
+            formFecha.setLenient(false);
+            formFecha.parse(fecha);
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
     }
 
     public int getDias() {
