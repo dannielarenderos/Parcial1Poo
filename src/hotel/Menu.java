@@ -211,6 +211,12 @@ public class Menu {
                                     case 2:
                                         System.out.println(" Habitaciones por estado");
                                         System.out.println("");
+                                        System.out.print("Ingrese el numero de piso: ");
+                                        int numPisoVer = leer.nextInt();
+                                        System.out.print("Ingrese el estado de las habitaciones a mostrar: ");
+                                        String estado = leer.next();
+                                        Piso pisoV = listaPisos.listaPisos.get(numPisoVer-1);
+                                        pisoV.mostrarHabitacionesPisoEstado(estado,0);
                                         break;
                                     case 3:
                                         System.out.println(" Modificar precio de habitacion");
@@ -266,6 +272,9 @@ public class Menu {
                                     case 2:
                                         System.out.println(" Pisos por estados ");
                                         System.out.println("");
+                                        System.out.print("Ingrese el estado de los pisos a mostrar: ");
+                                        String estadoV = leer.next();
+                                        listaPisos.mostrarPisosEstado(estadoV);
                                         break;
                                     case 3:
                                         System.out.println(" Modificar estado de piso ");
