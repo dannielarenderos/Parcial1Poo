@@ -44,7 +44,11 @@ public class ListaPisos {
             p.mostrar();
         }
     }
-
+    /**
+     * Asigna el precio a los pisos del hotel
+     * Aumenta el precio de los dos ultimos pisos en un 10%
+     * @param precio 
+     */
     public void precioBaseHotel(float precio) {
         for (Piso p : listaPisos) {
             p.setPrecioPiso(precio);
@@ -63,7 +67,10 @@ public class ListaPisos {
             h.setPrecioHab((float) (precio * 1.1));
         }
     }
-
+    /**
+     * Muestra los pisos que tienen un estado en especifico
+     * @param estado 
+     */
     public void mostrarPisosEstado(String estado) {
         int cont = 0;
         for (Piso p : listaPisos) {
